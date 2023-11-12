@@ -1,0 +1,24 @@
+.widget-logotype-container .intec-ui-picture {
+    width: 250px !important;
+}
+
+.ns-bitrix.c-menu.c-menu-mobile-2 .menu-panel-logotype {
+  display: none;
+}
+
+.ns-bitrix.c-menu.c-menu-horizontal-1 .menu-submenu-banner-section .menu-submenu-main-section .menu-submenu-main-section-item .menu-submenu-main-section-item-text {
+	display: none;
+}
+
+.ns-bitrix.c-menu.c-menu-horizontal-1 .menu-submenu-banner-section .menu-submenu-main-section {
+    display: none;
+}
+
+.ns-bitrix.c-menu.c-menu-vertical-3 .menu-item-text {
+	display: none;
+}
+
+.ns-bitrix.c-menu.c-menu-vertical-3 .menu-item-submenu[data-expanded="true"] {
+	padding-top: 10px;
+}
+
