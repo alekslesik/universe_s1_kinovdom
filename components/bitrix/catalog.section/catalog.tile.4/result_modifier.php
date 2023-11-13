@@ -7,6 +7,8 @@ use intec\core\helpers\StringHelper;
 use intec\core\helpers\Type;
 use intec\template\Properties;
 
+CModule::IncludeModule("iblock");
+
 /**
  * @var array $arParams
  * @var array $arResult
@@ -78,7 +80,7 @@ $arParams = ArrayHelper::merge([
 
 $arMacros = [
     'SITE_DIR' => SITE_DIR,
-    'SITE_TEMPLATE_PATH' => SITE_TEMPLATE_PATH.'/'
+    'SITE_TEMPLATE_PATH' => SITE_TEMPLATE_PATH . '/'
 ];
 
 $arPosition = [
@@ -128,7 +130,7 @@ $arVisual = [
         ]
     ],
     'MARKS' => [
-        'SHOW' => $arParams['MARKS_SHOW'] === 'Y' && (!empty($arCodes['MARKS']['HIT']) || !empty($arCodes['MARKS']['NEW']) || !empty($arCodes['MARKS']['RECOMMEND'])|| !empty($arCodes['MARKS']['SHARE'])),
+        'SHOW' => $arParams['MARKS_SHOW'] === 'Y' && (!empty($arCodes['MARKS']['HIT']) || !empty($arCodes['MARKS']['NEW']) || !empty($arCodes['MARKS']['RECOMMEND']) || !empty($arCodes['MARKS']['SHARE'])),
         'ORIENTATION' => ArrayHelper::fromRange(['horizontal', 'vertical'], $arParams['MARKS_ORIENTATION'])
     ],
     'COMPARE' => [
@@ -266,7 +268,7 @@ $arResult['DELAY'] = [
     'USE' => $arParams['DELAY_USE'] === 'Y' && $bBase
 ];
 
-include(__DIR__.'/modifiers/order.fast.php');
+include(__DIR__ . '/modifiers/order.fast.php');
 
 if ($arResult['ACTION'] !== 'buy' && $arResult['ACTION'] !== 'detail') {
     $arResult['ORDER_FAST']['USE'] = false;
@@ -335,9 +337,25 @@ $arResult['FORMS'] = [
 ];
 
 if ($bLite)
-    include(__DIR__.'/modifiers/lite/catalog.php');
+    include(__DIR__ . '/modifiers/lite/catalog.php');
 
 foreach ($arResult['ITEMS'] as &$arItem) {
+    // ID элемента инфоблока
+    $elementId = $arItem["ID"]; // Замените на нужный ID элемента
+
+    // Загрузка элемента инфоблока
+
+    $arSelect = array("ID", "NAME", "PROPERTY_REQUEST_USE"); // Замените на необходимые поля
+    $arFilter = array("IBLOCK_ID" => $arItem["IBLOCK_ID"], "ID" => $elementId); // Замените <ID_вашего_инфоблока> на ID вашего инфоблока
+    $res = CIBlockElement::GetList(array(), $arFilter, false, false, $arSelect);
+    if ($ob = $res->GetNext()) {
+        // Получение значения свойства REQUEST_USE
+        $requestUse = $ob['PROPERTY_REQUEST_USE_VALUE'];
+
+        // Вывод значения
+        $arItem['PROPERTIES']['PROPERTY_REQUEST_USE'] = $requestUse;
+    }
+
     $arItem['VISUAL'] = [
         'OFFER' => !empty($arItem['OFFERS']),
         'ACTION' => $arResult['ACTION'],
@@ -470,12 +488,12 @@ foreach ($arResult['ITEMS'] as &$arItem) {
     }
 }
 
-include(__DIR__.'/modifiers/pictures.php');
-include(__DIR__.'/modifiers/properties.php');
-include(__DIR__.'/modifiers/quick.view.php');
+include(__DIR__ . '/modifiers/pictures.php');
+include(__DIR__ . '/modifiers/properties.php');
+include(__DIR__ . '/modifiers/quick.view.php');
 
 if ($arVisual['TIMER']['SHOW']) {
-    include(__DIR__.'/modifiers/timer.php');
+    include(__DIR__ . '/modifiers/timer.php');
 }
 
 if ($bBase) {
@@ -498,9 +516,9 @@ if ($bBase) {
 }
 
 if ($bBase || $bLite)
-    include(__DIR__.'/modifiers/catalog.php');
+    include(__DIR__ . '/modifiers/catalog.php');
 
 if ($arVisual['MEASURES']['USE'])
-    include(__DIR__.'/modifiers/measures.php');
+    include(__DIR__ . '/modifiers/measures.php');
 
 $arResult['VISUAL'] = $arVisual;

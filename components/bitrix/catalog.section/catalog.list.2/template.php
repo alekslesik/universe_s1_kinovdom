@@ -335,6 +335,9 @@ include(__DIR__.'/parts/sku.php');
                                 $arItem['DATA']['COMPARE']['USE'] ||
                                 $arItem['DATA']['ACTION'] !== 'none'
                             ) { ?>
+
+                            <?php if (($arItem['PROPERTIES']['PROPERTY_REQUEST_USE'] !== "Да" && $arItem['PROPERTIES']['PROPERTY_REQUEST_USE'] !== "Y") && ($arItem['VISUAL']['ACTION'] !== 'none')) { ?>
+
                                 <div class="catalog-section-item-separator"></div>
                                 <?= Html::beginTag('div', [
                                     'class' => Html::cssClassFromArray([
@@ -408,6 +411,9 @@ include(__DIR__.'/parts/sku.php');
                                         </div>
                                     <?php } ?>
                                 <?= Html::endTag('div') ?>
+
+                                <?php } ?>
+
                             <?php } ?>
                         </div>
                     <?= Html::endTag('div') ?>

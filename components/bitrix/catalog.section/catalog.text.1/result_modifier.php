@@ -251,6 +251,23 @@ if ($bLite)
     include(__DIR__ . '/modifiers/lite/catalog.php');
 
 foreach ($arResult['ITEMS'] as &$arItem) {
+
+    // ID элемента инфоблока
+    $elementId = $arItem["ID"]; // Замените на нужный ID элемента
+
+    // Загрузка элемента инфоблока
+
+    $arSelect = array("ID", "NAME", "PROPERTY_REQUEST_USE"); // Замените на необходимые поля
+    $arFilter = array("IBLOCK_ID" => $arItem["IBLOCK_ID"], "ID" => $elementId); // Замените <ID_вашего_инфоблока> на ID вашего инфоблока
+    $res = CIBlockElement::GetList(array(), $arFilter, false, false, $arSelect);
+    if ($ob = $res->GetNext()) {
+        // Получение значения свойства REQUEST_USE
+        $requestUse = $ob['PROPERTY_REQUEST_USE_VALUE'];
+
+        // Вывод значения
+        $arItem['PROPERTIES']['PROPERTY_REQUEST_USE'] = $requestUse;
+    }
+    
     $arItem['DATA'] = [
         'OFFER' => !empty($arItem['OFFERS']),
         'ACTION' => $arResult['ACTION'],
