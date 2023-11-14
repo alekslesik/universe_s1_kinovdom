@@ -87,6 +87,9 @@ $vPrice = function (&$arItem) use (&$arVisual, &$arSvg) {
             'discount' => !empty($arPrice) && $arPrice['PERCENT'] > 0 ? 'true' : 'false'
         ]
     ]) ?>
+
+
+    <?php if ($arPrice["PRICE"] != 0) { ?>
         <?= Html::beginTag('div', [
             'class' => [
                 'catalog-section-item-price-wrapper',
@@ -131,6 +134,9 @@ $vPrice = function (&$arItem) use (&$arVisual, &$arSvg) {
                 </div>
             </div>
         <?= Html::endTag('div') ?>
+        <?php } ?>
+
+
         <?php if ($arVisual['PRICE']['PERCENT']) { ?>
             <div class="catalog-section-item-price-percent-container">
                 <div class="catalog-section-item-price-percent">

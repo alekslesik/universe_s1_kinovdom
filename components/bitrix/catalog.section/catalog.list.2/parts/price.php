@@ -67,6 +67,10 @@ $vPrice = function (&$arItem) use (&$arVisual) {
             'discount' => !empty($arPrice) && $arPrice['PERCENT'] > 0 ? 'true' : 'false'
         ]
     ]) ?>
+
+    <?php if ($arPrice["PRICE"] != 0) { ?>
+
+
         <div class="catalog-section-item-price-wrapper intec-grid intec-grid-nowrap intec-grid-i-h-8 intec-grid-a-v-top">
             <div class="catalog-section-item-price-discount intec-grid-item-auto">
                 <?= Html::tag('div', Loc::getMessage('C_CATALOG_SECTION_CATALOG_LIST_2_PRICE_TITLE', [
@@ -110,5 +114,7 @@ $vPrice = function (&$arItem) use (&$arVisual) {
                 </div>
             </div>
         </div>
+        <?php } ?>
+
     <?= Html::endTag('div') ?>
 <?php };
