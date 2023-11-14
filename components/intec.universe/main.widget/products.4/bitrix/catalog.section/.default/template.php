@@ -34,8 +34,11 @@ $sTemplateId = Html::getUniqueId(null, Component::getUniqueId($this));
 $arBlocks = $arResult['BLOCKS'];
 $arVisual = $arResult['VISUAL'];
 
-if (empty($arResult['ITEMS']) || empty($arResult['CATEGORIES']))
-    return;
+// if (empty($arResult['ITEMS']) || empty($arResult['CATEGORIES']))
+//     return;
+
+// if (empty($arResult['ITEMS']) || empty($arResult['CATEGORIES']))
+//     return;
 
 $arSvg = [
     'DELAY' => FileHelper::getFileData(__DIR__.'/svg/delay.svg'),
