@@ -571,7 +571,7 @@ foreach ($arResult['ITEMS'] as &$arItem) {
         'VALUE_XML_ID'
     ]);
 
-    if (!empty($arCategory) && ArrayHelper::keyExists($arCategory, $arCategories)) {
+    // if (!empty($arCategory) && ArrayHelper::keyExists($arCategory, $arCategories)) {
         $arCategory = &$arCategories[$arCategory];
 
         if ($arItem['BANNER']['SHOW'] && empty($arCategory['BANNER'])) {
@@ -581,7 +581,7 @@ foreach ($arResult['ITEMS'] as &$arItem) {
         }
 
         unset($arCategory);
-    }
+    // }
 }
 
 if (!empty($arSections)) {
