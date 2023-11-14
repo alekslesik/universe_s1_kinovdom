@@ -336,8 +336,15 @@ include(__DIR__.'/parts/sku.php');
                                 $arItem['DATA']['ACTION'] !== 'none'
                             ) { ?>
 
-                            <?php if (($arItem['PROPERTIES']['PROPERTY_REQUEST_USE'] !== "Да" && $arItem['PROPERTIES']['PROPERTY_REQUEST_USE'] !== "Y") && ($arItem['VISUAL']['ACTION'] !== 'none')) { ?>
+                    <?php if (
+                        (
+                            ($arItem['PROPERTIES']['PROPERTY_REQUEST_USE'] !== "Да" && $arItem['PROPERTIES']['PROPERTY_REQUEST_USE'] !== "Y")
+                            &&
+                            ($arItem['PROPERTIES']['PROPERTY_ORDER_USE'] !== "Да" && $arItem['PROPERTIES']['PROPERTY_ORDER_USE'] !== "Y")
+                        ))
+                    { ?>
 
+ewesdgvsrgbvegvb
                                 <div class="catalog-section-item-separator"></div>
                                 <?= Html::beginTag('div', [
                                     'class' => Html::cssClassFromArray([

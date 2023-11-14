@@ -344,8 +344,7 @@ foreach ($arResult['ITEMS'] as &$arItem) {
     $elementId = $arItem["ID"]; // Замените на нужный ID элемента
 
     // Загрузка элемента инфоблока
-
-    $arSelect = array("ID", "NAME", "PROPERTY_REQUEST_USE"); // Замените на необходимые поля
+    $arSelect = array("ID", "NAME", "PROPERTY_REQUEST_USE", "PROPERTY_ORDER_USE"); // Замените на необходимые поля
     $arFilter = array("IBLOCK_ID" => $arItem["IBLOCK_ID"], "ID" => $elementId); // Замените <ID_вашего_инфоблока> на ID вашего инфоблока
     $res = CIBlockElement::GetList(array(), $arFilter, false, false, $arSelect);
     if ($ob = $res->GetNext()) {
@@ -354,6 +353,10 @@ foreach ($arResult['ITEMS'] as &$arItem) {
 
         // Вывод значения
         $arItem['PROPERTIES']['PROPERTY_REQUEST_USE'] = $requestUse;
+
+        $orderUse = $ob['PROPERTY_ORDER_USE_VALUE'];
+
+        $arItem['PROPERTIES']['PROPERTY_ORDER_USE'] = $orderUse;
     }
 
     $arItem['VISUAL'] = [

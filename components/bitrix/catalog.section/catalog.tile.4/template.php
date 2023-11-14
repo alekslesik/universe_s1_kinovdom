@@ -317,7 +317,16 @@ include(__DIR__.'/parts/sku.php');
                             </div>
                         <?php } ?>
                     </div>
-                    <?php if (($arItem['PROPERTIES']['PROPERTY_REQUEST_USE'] !== "Да" && $arItem['PROPERTIES']['PROPERTY_REQUEST_USE'] !== "Y") && ($arItem['VISUAL']['ACTION'] !== 'none')) { ?>
+
+                    <?php if (
+                        (
+                            ($arItem['PROPERTIES']['PROPERTY_REQUEST_USE'] !== "Да" && $arItem['PROPERTIES']['PROPERTY_REQUEST_USE'] !== "Y")
+                            &&
+                            ($arItem['PROPERTIES']['PROPERTY_ORDER_USE'] !== "Да" && $arItem['PROPERTIES']['PROPERTY_ORDER_USE'] !== "Y")
+                        )
+                        && ($arItem['VISUAL']['ACTION'] !== 'none')
+                        )
+                    { ?>
                         <!--noindex-->
                         <div class="catalog-section-item-advanced">
                             <div class="catalog-section-item-purchase-container">

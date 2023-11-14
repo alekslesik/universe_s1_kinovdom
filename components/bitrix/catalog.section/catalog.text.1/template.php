@@ -269,8 +269,13 @@ include(__DIR__.'/parts/measure.php');
                                 </div>
                             <?= Html::endTag('div') ?>
 
-                            <?php if (($arItem['PROPERTIES']['PROPERTY_REQUEST_USE'] !== "Да" && $arItem['PROPERTIES']['PROPERTY_REQUEST_USE'] !== "Y") && ($arItem['VISUAL']['ACTION'] !== 'none')) { ?>
-
+                    <?php if (
+                        (
+                            ($arItem['PROPERTIES']['PROPERTY_REQUEST_USE'] !== "Да" && $arItem['PROPERTIES']['PROPERTY_REQUEST_USE'] !== "Y")
+                            &&
+                            ($arItem['PROPERTIES']['PROPERTY_ORDER_USE'] !== "Да" && $arItem['PROPERTIES']['PROPERTY_ORDER_USE'] !== "Y")
+                        ))
+                    { ?>
                             <?= Html::beginTag('div', [
                                 'class' => Html::cssClassFromArray([
                                     'intec-grid-item' => [
