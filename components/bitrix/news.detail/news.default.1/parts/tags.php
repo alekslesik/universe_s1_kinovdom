@@ -19,7 +19,7 @@ $iCounter = 0
         ?>
             <div class="intec-grid-item-auto">
                 <div class="news-detail-tags-item" data-color="<?= $iCounter ?>">
-                    <?= '#'.$sTag ?>
+                    <?= $sTag ?>
                 </div>
             </div>
         <?php } ?>

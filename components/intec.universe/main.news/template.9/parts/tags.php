@@ -26,7 +26,7 @@ use intec\core\helpers\Html;
                             'data-role' => 'items.input',
                             'data-first-item' => $bFirst ? 'true' : 'false'
                         ]) ?>
-                        <?= Html::tag('span', '#'.$sTag, [
+                        <?= Html::tag('span', $sTag, [
                             'class' => Html::cssClassFromArray([
                                 'intec-cl-text' => !$bFirst,
                                 'intec-cl-background-light-hover' => $arResult['TAGS']['MODE'] === 'active'
