@@ -37,9 +37,6 @@ $arVisual = $arResult['VISUAL'];
 // if (empty($arResult['ITEMS']) || empty($arResult['CATEGORIES']))
 //     return;
 
-// if (empty($arResult['ITEMS']) || empty($arResult['CATEGORIES']))
-//     return;
-
 $arSvg = [
     'DELAY' => FileHelper::getFileData(__DIR__.'/svg/delay.svg'),
     'COMPARE' => FileHelper::getFileData(__DIR__.'/svg/compare.svg'),

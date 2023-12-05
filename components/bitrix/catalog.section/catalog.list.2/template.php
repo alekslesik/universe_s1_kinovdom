@@ -344,7 +344,6 @@ include(__DIR__.'/parts/sku.php');
                         ))
                     { ?>
 
-ewesdgvsrgbvegvb
                                 <div class="catalog-section-item-separator"></div>
                                 <?= Html::beginTag('div', [
                                     'class' => Html::cssClassFromArray([
