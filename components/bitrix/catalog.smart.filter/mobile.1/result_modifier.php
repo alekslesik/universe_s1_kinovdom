@@ -25,6 +25,8 @@ if (!Type::isArray($arParams['PRICES_EXPANDED']))
 if (Loader::includeModule('intec.startshop'))
     include(__DIR__.'/modifier/lite.php');
 
+$arResult['ITEMS'] = array_slice($arResult['ITEMS'], 0, 6);
+
 foreach ($arResult['ITEMS'] as $sKey => &$arItem) {
     if (!isset($arItem['DISPLAY_EXPANDED']))
         $arItem['DISPLAY_EXPANDED'] = 'N';
