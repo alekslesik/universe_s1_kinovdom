@@ -11,8 +11,8 @@ use intec\core\helpers\Type;
  * @var CatalogSectionComponent $component
  */
 
-$component = $this->getComponent();
-$component->applyTemplateModifications();
+//$component = $this->getComponent();
+//$component->applyTemplateModifications();
 
 foreach ($arResult['ITEMS'] as &$arItem) {
     if (!empty($arItem['OFFERS']))

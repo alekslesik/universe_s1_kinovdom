@@ -1,0 +1,3 @@
+div.smart-filter-wrapper > form > div > div:nth-child(1) {
+    display: none;
+}
