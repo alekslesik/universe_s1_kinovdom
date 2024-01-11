@@ -25,11 +25,13 @@ if (!Type::isArray($arParams['PRICES_EXPANDED']))
 if (Loader::includeModule('intec.startshop'))
     include(__DIR__.'/modifier/lite.php');
 
-$arResult['ITEMS'] = array_slice($arResult['ITEMS'], 0, 6);
 
 foreach ($arResult['ITEMS'] as $sKey => &$arItem) {
     if (!isset($arItem['DISPLAY_EXPANDED']))
         $arItem['DISPLAY_EXPANDED'] = 'N';
+
+    if (!$arItem["VALUES"])
+        unset($arResult['ITEMS'][$sKey]);
 
     if (isset($arItem['PRICE']) && $arItem['PRICE']) {
         $arItem['DISPLAY_TYPE'] = 'A';
@@ -43,8 +45,14 @@ foreach ($arResult['ITEMS'] as $sKey => &$arItem) {
             $arValue['CONTROL_ID'] = $arValue['CONTROL_ID'].'_mobile';
     }
 
+
+
     unset($arValue);
 }
+
+    $base = $arResult['ITEMS']['BASE'];
+    $arResult['ITEMS'] = array_slice($arResult['ITEMS'], 0, 5);
+    $arResult['ITEMS']['BASE'] = $base;
 
 unset($arItem);
 
